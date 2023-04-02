@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>Create account</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap\css\bootstrap.min.css' %}">
+  </head>
+  <body>
+    
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-12 col-sm-8 col-md-6 col-lg-4 offset-sm-2 offset-md-3 offset-lg-4"
+          >
+          <br>
+            <h1 class="mb-3 text-center">Create a new account</h1>
+            <p class="lead">
+              <div class="text-center">
+              It's free and enjoy the analytics.</div>
+            </p>
+            <form class="mb-3" action="/signup" method="post">
+              {% csrf_token %}
+              <div class="row">
+                <div class="form-group col-12 col-sm-6">
+                  <label for="firstName">First name:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="First name"
+                    id="firstName"
+                    name="firstName"
+                    required
+                  />
+                </div>
+                <div class="form-group col-12 col-sm-6">
+                  <label for="lastName">Last name:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Last name"
+                    id="lastName"
+                    name="lastName"
+                    required
+                  />
+                </div>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="example@example.com"
+                  id="email"
+                  name="email"
+                  required
+                />
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="username">Username:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="username"
+                  id="username"
+                  name="username"
+                  required
+                />
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="password">Password:</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  name="pass1"
+                  required
+                />
+              </div >
+              <br>
+              <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-block mb-3">
+                Create account
+              </button>
+              </div>
+              <div class="alert alert-info small" role="alert">
+                By clicking above you agree to our
+                <a href="#" class="alert-link">Terms &amp; Conditions</a> and
+                our <a href="#" class="alert-link">Privacy Policy</a>.
+              </div>
+              <div class="text-center">
+                <p>or ...</p>
+                <a href="/" class="btn btn-success">Login</a>
+              </div>
+            </form>
+            
+          </div>
+          <!-- <div class="column">
+            <img src="{% static 'images/img-01.png' %}" style="width:80%">
+          </div>
+          <style>
+            .column {
+                      float: right;
+                      width: 40%;
+                      margin-left:120px;
+                      margin-top:15px ;
+                      
+                    }
+          </style> -->
+        </div>
+      </div>
+   </div> 
+  </body>
+</html>
