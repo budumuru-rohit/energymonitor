@@ -2,32 +2,52 @@ from django.shortcuts import render,redirect
 from base.models import energymonitor
 import datetime
 
-def daily_current(request):
-    latest_date=energymonitor.objects.latest('day')
-    latest_record_r = energymonitor.objects.latest('current_r')
-    data = {
-    'field1': latest_date,
-    'field2': latest_record_r,
-    }
-    context = {'latest_record_data': data}
-    return render(request, "app/power.html", context)
 
 # Create your views here.
+def home(request):
+    return render(request,"app/home.html")
+
 def base(request):
     print('base')
     # i am redirecting it directly to power page temporarily
-    return render(request,"app/power.html")
+    # return render(request,"app/power.html")
     return render(request,"app/base.html")
 def workshop(request):
     print('workshop')
     return render(request,"app/workshop.html")
-
+# cols = plotly.colors.DEFAULT_PLOTLY_COLORS
 def oee(request):
     print('oee')
-    return render(request,"app/oee.html")
+    table=energymonitor.objects.all()
+    y=[float(c.current_r) for c in table]
+    print(y)
+   
+    fig = make_subplots(rows=1, cols=3,subplot_titles=("Current_r", "current_y", "current_b"))
+    fig.add_trace(go.Scatter(y=[c.current_r for c in table],x=[c.day for c in table], mode="lines", marker=dict(color='#FF0000'),name='r-phase'), row=1, col=1)
+    fig.add_trace(go.Scatter(y=[c.current_y for c in table],x=[c.day for c in table], mode="lines",marker=dict(color='#FFFF00'),name='y-phase'), row=1, col=2)
+    fig.add_trace(go.Scatter(y=[c.current_b for c in table],x=[c.day for c in table], mode="lines",marker=dict(color='#0000FF'),name='b-phase'), row=1, col=3)
+    fig.update_layout(
+                  title_text="Current consumption @ lathe")
+    fig.update_xaxes(title_text="Day",showgrid=False)
+    fig.update_yaxes(title_text="Ampere",showgrid=False)
+    # fig=px.line( 
+    #     x=[c.day for c in table],
+    #     y=[c.current_r for c in table],row=1,column=1
+    # )
+    chart=fig.to_html()
+    context={'chart':chart,'y':y}
+    return render(request,"app/oee.html",context)
+
+
 def power(request):
     print('power')
-    return render(request,"app/power.html")
+    table=energymonitor.objects.all()
+    x=[c.day for c in table]
+    r=[float(c.current_r) for c in table]
+    y=[float(c.current_y) for c in table]
+    b=[float(c.current_b) for c in table]
+    context={'r':r,'y':y,'b':b,'x':x}
+    return render(request,"app/power.html",context)
     
 def data_view(request):
     current_time = datetime.datetime.now()
@@ -74,4 +94,13 @@ def data_view(request):
             table.save()
             print('sucessc')
     return render(request,'app/data.html',{"curr":curr_r})
+
+import plotly
+import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+import pandas as pd
+
+
+    
    

@@ -113,7 +113,11 @@
       </div>
     </div>
   </div>
-
+  <form action="/action_page.php">
+    <label for="birthday">Birthday:</label>
+    <input type="date" id="birthday" name="birthday">
+    <input type="submit">
+  </form>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
   <script src="{% static 'js/apexcharts.js'%}"></script>
   <script type="text/javascript">
@@ -350,7 +354,6 @@ new ApexCharts(document.querySelector("#spark2"), spark2).render();
 new ApexCharts(document.querySelector("#spark3"), spark3).render();
 new ApexCharts(document.querySelector("#spark4"), spark4).render();
 
-
 var optionsLine = {
 chart: {
   height: 328,
@@ -371,19 +374,15 @@ stroke: {
   width: 2
 },
 colors: ['#ff4d4d','#ffd700','#00ced1'],
-series: [{
-    name: "R-Phase",
-    data: [1,5]
-    
-  },
+series: [
+  {name: "R-Phase", 
+  data:{{r}}},
   {
     name: "Y-Phase",
-    data: [3, 33, ]
-  },
+    data: {{y}}},
   {
     name: "B-Phase",
-    data: [0, 39, ]
-  }
+    data: {{b}}}
 ],
 title: {
   text: 'Current',
@@ -409,7 +408,7 @@ grid: {
     bottom: 0
   }
 },
-labels: ['01/15/2002', '01/16/2002', '01/17/2002', '01/18/2002', '01/19/2002', '01/20/2002'],
+labels: {{x}},
 xaxis: {
   tooltip: {
     enabled: false

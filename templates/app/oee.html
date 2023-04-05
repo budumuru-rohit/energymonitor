@@ -1,10 +1,23 @@
 <!DOCTYPE html>
+{% extends 'app/base.html' %}
+{% load static %}
+
 <html>
-<body>
+{% block content %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<h1>My First Heading</h1>
+    <title>
+        plotly
+    </title>
+</head>
+<body >
+    
+        {{chart|safe}}
+        {{tab|safe}}
 
-<p>My first paragraph.</p>
 
+{% endblock content%}
+    
 </body>
 </html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% extends 'app/base.html' %}
+{% load static %}
+
+<html>
+{% block content %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>
+       home
+    </title>
+    <style>
+            text {
+                display: grid;
+                grid-template-columns: min-content 1fr;        
+            }
+            img {
+            max-width: 100%;
+            height: auto;
+            }
+      </style>
+</head>
+
+<body >
+    <div class="container">
+        <div class="img">
+            <img src="{% static 'images/dept.png' %}" >
+        </div>
+        <div class="text" style="background-color:#78ACC1;color: aliceblue;">
+            <p>
+                The central workshop, a central facility, was merged with the Department of Mechanical Engineering in the year 1992. 
+                The Workshop consisting of Fitting Shop, Welding shop, Carpentry shop, Power Tools shop, Foundry Shop, Machine Shop and House wiring shop.
+                <br><br>The facilities are used for the conduction of regular sessional classes as a part of the curriculum for students at various levels pertaining to different departments. In addition to housing many conventional machines and equipment it also has most modern fabrication and production units in tune with the recent technological developments. 
+                Some of these include Electro Chemical Machine, EDM, Tig and Mig welding machines, Tool and cutter Grinding Machine, Mitutoyo Tool Makers Microscope, Kistler 3 component force measurement Dynamometer, Variable Speed Precision Lathe, Tool Monitoring Equipment during machining and CNC Engraving Machine etc.
+                <br><br>Steps are afoot for further modernization of the central workshop utilizing the funds made available through MHRD / MODROBS / TEQIP etc.
+                Workshop facilities are extended to facilitate execution of different projects / research work at UG, PG and Doctoral level, under the guidance of the respective guides.
+            </p>
+            <input type="button" value="Virtual Tour" class="btn_virtual" name="b1" onclick="virtual_tour();">
+         
+        </div>
+      </div>
+    
+    <!-- <div class="aboutus" style="background-color:#78ACC1;color: aliceblue;" >
+        <p>
+            The central workshop, a central facility, was merged with the Department of Mechanical Engineering in the year 1992. 
+            The Workshop consisting of Fitting Shop, Welding shop, Carpentry shop, Power Tools shop, Foundry Shop, Machine Shop and House wiring shop.
+            <br><br>The facilities are used for the conduction of regular sessional classes as a part of the curriculum for students at various levels pertaining to different departments. In addition to housing many conventional machines and equipment it also has most modern fabrication and production units in tune with the recent technological developments. 
+            Some of these include Electro Chemical Machine, EDM, Tig and Mig welding machines, Tool and cutter Grinding Machine, Mitutoyo Tool Makers Microscope, Kistler 3 component force measurement Dynamometer, Variable Speed Precision Lathe, Tool Monitoring Equipment during machining and CNC Engraving Machine etc.
+            <br><br>Steps are afoot for further modernization of the central workshop utilizing the funds made available through MHRD / MODROBS / TEQIP etc.
+            Workshop facilities are extended to facilitate execution of different projects / research work at UG, PG and Doctoral level, under the guidance of the respective guides.
+        </p>
+        <input type="button" value="Virtual Tour" class="btn_virtual" name="b1" onclick="virtual_tour();">
+    </div> -->
+
+
+{% endblock content%}
+    
+</body>
+</html>
